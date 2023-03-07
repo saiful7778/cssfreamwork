@@ -1,0 +1,59 @@
+// importing files
+@import "container/container.scss";
+@import "row/row.scss";
+@import "colume/colume.scss";
+@import "order/order.scss";
+@import "rootstyles/root.scss";
+@import "responsive/responsive.scss";
+
+
+// === Call all mixin functions
+@include container();
+@include row();
+@include colume();
+@include order();
+
+@mixin getBreakpoint($Breakpoints: null) {
+  @each $Breakpoint in $Breakpoints {
+    @if $Breakpoint == sm {
+      // small screen
+      @media (min-width: 576px) {
+        @include containerSmall();
+        @include columeSmall();
+        @include orderSmall();
+      }
+    } @else if $Breakpoint == md {
+      // medium screen
+      @media (min-width: 768px) {
+        @include containerMedium();
+        @include columeMedium();
+        @include orderMedium();
+      }
+    } @else if $Breakpoint == lg {
+      // large screen
+      @media (min-width: 992px) {
+        @include containerLarge();
+        @include columeLarge();
+        @include orderLarge();
+      }
+    } @else if $Breakpoint == xl {
+      // extra large screen
+      @media (min-width: 1200px) {
+        @include containerExtralarge();
+        @include columeExtralarge();
+        @include orderExtralarge();
+      }
+    } @else if $Breakpoint == xxl {
+      // extra extra large screen
+      @media (min-width: 1400px) {
+        @include containerExtraExtralarge();
+        @include columeExtraExtralarge();
+        @include orderExtraExtralarge();
+      }
+    }
+  }
+}
+
+$allBreakpoints: (sm, lg);
+
+@include getBreakpoint($allBreakpoints);
